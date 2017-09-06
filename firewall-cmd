@@ -1,0 +1,32 @@
+####################################################################################################################################
+###############################You have to reload firewall to apply#################################################################
+####################################################################################################################################
+#reload
+firewall-cmd --reload
+####################################################################################################################################
+###############################               Port                 #################################################################
+####################################################################################################################################
+#add-port
+firewall-cmd --permanent --zone=public --add-port=3306/tcp
+#remove-port
+firewall-cmd --permanent --zone=public --remove-port=3306/tcp
+####################################################################################################################################
+###############################               serivce              #################################################################
+####################################################################################################################################
+#If you want to apply as you service, you have to have 'servcie'.xml in '/usr/lib/firewalld/services'
+#you can manage 'service'.xml in '/etc/firewalld/services'
+#add-service
+firewall-cmd --permanent --zone=public --add-service=mysql
+#remove-service
+firewall-cmd --permanent --zone=public --remove-service=mysql
+####################################################################################################################################
+###############################             Rich rule              #################################################################
+####################################################################################################################################
+#add-rich-rule(accept rule)
+firewall-cmd --permanent --zone=public --add-rich-rule="rule family=ipv4 source address=192.168.0.4/24 service name=mysql accept"
+#remove-rich-rule(accept rule)
+firewall-cmd --permanent --zone=public --remove-rich-rule="rule family=ipv4 source address=192.168.0.4/24 service name=mysql accept"
+#add-rich-rule(reject rule)
+firewall-cmd --permanent --zone=public --add-rich-rule="rule family=ipv4 source address=192.168.0.4/24 service name=mysql reject"
+#remove-rich-rule(reject rule)
+firewall-cmd --permanent --zone=public --remove-rich-rule="rule family=ipv4 source address=192.168.0.4/24 service name=mysql reject"
