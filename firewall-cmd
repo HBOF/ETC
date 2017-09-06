@@ -3,9 +3,19 @@
 ####################################################################################################################################
 #reload
 firewall-cmd --reload
+#list
+firewall-cmd --list
+#state
+firewall-cmd --state
+#active-zones
+firewall-cmd --get-active-zones
+#get-service
+firewall-cmd --get-service
 ####################################################################################################################################
 ###############################               Port                 #################################################################
 ####################################################################################################################################
+#check port
+firewall-cmd --list-ports
 #add-port
 firewall-cmd --permanent --zone=public --add-port=3306/tcp
 #remove-port
@@ -15,6 +25,9 @@ firewall-cmd --permanent --zone=public --remove-port=3306/tcp
 ####################################################################################################################################
 #If you want to apply as you service, you have to have 'servcie'.xml in '/usr/lib/firewalld/services'
 #you can manage 'service'.xml in '/etc/firewalld/services'
+#check service
+firewall-cmd --list-services
+firewall-cmd --zone=public --list-services
 #add-service
 firewall-cmd --permanent --zone=public --add-service=mysql
 #remove-service
