@@ -53,3 +53,10 @@ firewall-cmd --permanent --zone=public --remove-rich-rule="rule family=ipv4 sour
 firewall-cmd --permanent --zone=$(firewall-cmd --get-default-zone) --add-rich-rule='rule family=ipv4 source address=0.0.0.0/0 drop'
 firewall-cmd --permanent --zone=$(firewall-cmd --get-default-zone) --add-rich-rule='rule family=ipv6 source address=::/0 drop'
 firewall-cmd --permanent --zone=$(firewall-cmd --get-default-zone) --remove-rich-rule='rule family=ipv4 source address=0.0.0.0/0 accept'
+
+####################################################################################################################################
+###############################           logging!!!!              #################################################################
+####################################################################################################################################
+
+# deny packet logging (options - 'all','unicast','broadcast','multicast','off')
+# firewall-cmd --set-log-denied="all"
